@@ -13,13 +13,16 @@
 
 <script setup lang="ts">
 const { start, stop } = useAutoLogout()
+const { connect: wsConnect, disconnect: wsDisconnect } = useWebSocket()
 
 onMounted(() => {
   start()
+  wsConnect()
 })
 
 onUnmounted(() => {
   stop()
+  wsDisconnect()
 })
 </script>
 

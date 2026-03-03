@@ -2,6 +2,7 @@
   <header class="main-content__header">
     <h1 class="page-title">{{ pageTitle }}</h1>
     <div class="d-flex align-items-center gap-3">
+      <SharedStockAlerts />
       <span class="text-muted" style="font-size: 0.875rem">
         <i class="bi bi-person-circle me-1"></i>
         {{ userStore.username || userStore.email }}
