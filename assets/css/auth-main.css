@@ -1,0 +1,42 @@
+/* ITCSS Architecture - Auth layout entry point */
+@import './settings/_variables.css';
+@import './base/_reset.css';
+@import './components/_buttons.css';
+@import './components/_forms.css';
+
+.auth-layout {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #1e40af 100%);
+}
+
+.auth-card {
+  background: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-2xl);
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-card__logo {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.auth-card__logo i {
+  font-size: 3rem;
+  color: var(--color-primary);
+}
+
+.auth-card__logo h1 {
+  font-size: var(--font-size-2xl);
+  margin-top: var(--spacing-sm);
+}
+
+.auth-card__logo p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}

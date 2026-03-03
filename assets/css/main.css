@@ -1,0 +1,21 @@
+/* ITCSS Architecture - Main entry point */
+
+/* 1. Settings - Variables, tokens */
+@import './settings/_variables.css';
+
+/* 2. Base - Resets, typography */
+@import './base/_reset.css';
+
+/* 3. Components */
+@import './components/_buttons.css';
+@import './components/_cards.css';
+@import './components/_tables.css';
+@import './components/_forms.css';
+@import './components/_notifications.css';
+
+/* 4. Layouts */
+@import './layouts/_sidebar.css';
+@import './layouts/_dashboard.css';
+
+/* 5. Utilities */
+@import './utilities/_helpers.css';

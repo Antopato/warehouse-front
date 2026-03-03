@@ -1,0 +1,31 @@
+.btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.btn--outline-danger {
+  border: 2px solid var(--color-danger);
+  color: var(--color-danger);
+  background: transparent;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn--outline-danger:hover {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
