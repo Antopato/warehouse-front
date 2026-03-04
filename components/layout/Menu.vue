@@ -6,15 +6,18 @@
     </div>
 
     <nav class="sidebar__nav">
-      <div class="sidebar__section">Principal</div>
-      <NuxtLink to="/users/dashboard" class="sidebar__link" active-class="sidebar__link--active">
-        <i class="bi bi-speedometer2"></i>
-        <span>Dashboard</span>
-      </NuxtLink>
-      <NuxtLink to="/users/analitics" class="sidebar__link" active-class="sidebar__link--active">
-        <i class="bi bi-bar-chart-line"></i>
-        <span>Analiticas</span>
-      </NuxtLink>
+      <template v-if="isAdmin()">
+        <div class="sidebar__section">Principal</div>
+        <NuxtLink to="/users/dashboard" class="sidebar__link" active-class="sidebar__link--active">
+          <i class="bi bi-speedometer2"></i>
+          <span>Dashboard</span>
+        </NuxtLink>
+        <NuxtLink to="/users/analitics" class="sidebar__link" active-class="sidebar__link--active">
+          <i class="bi bi-bar-chart-line"></i>
+          <span>Analiticas</span>
+        </NuxtLink>
+      </template>
+
       <NuxtLink to="/sells/sells" class="sidebar__link" active-class="sidebar__link--active">
         <i class="bi bi-cart"></i>
         <span>Ventas</span>
@@ -25,16 +28,16 @@
         <i class="bi bi-box"></i>
         <span>Productos</span>
       </NuxtLink>
-      <NuxtLink to="/products/add_product" class="sidebar__link" active-class="sidebar__link--active">
-        <i class="bi bi-plus-circle"></i>
-        <span>Nuevo Producto</span>
-      </NuxtLink>
-      <NuxtLink to="/categories" class="sidebar__link" active-class="sidebar__link--active">
-        <i class="bi bi-tags"></i>
-        <span>Categorias</span>
-      </NuxtLink>
+      <template v-if="isAdmin()">
+        <NuxtLink to="/products/add_product" class="sidebar__link" active-class="sidebar__link--active">
+          <i class="bi bi-plus-circle"></i>
+          <span>Nuevo Producto</span>
+        </NuxtLink>
+        <NuxtLink to="/categories" class="sidebar__link" active-class="sidebar__link--active">
+          <i class="bi bi-tags"></i>
+          <span>Categorias</span>
+        </NuxtLink>
 
-      <template v-if="canManageUsers()">
         <div class="sidebar__section">Administracion</div>
         <NuxtLink to="/users" class="sidebar__link" active-class="sidebar__link--active">
           <i class="bi bi-people"></i>
@@ -59,7 +62,7 @@
 <script setup lang="ts">
 import { useUserStore } from '~/stores/user'
 
-const { canManageUsers } = usePermissions()
+const { isAdmin } = usePermissions()
 const { doLogout } = useApi()
 const userStore = useUserStore()
 

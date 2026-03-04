@@ -29,7 +29,7 @@
                   <th>Productos</th>
                   <th>Total</th>
                   <th>Margen</th>
-                  <th>Acciones</th>
+                  <th v-if="isAdmin()">Acciones</th>
                 </tr>
               </thead>
               <tbody>
@@ -50,7 +50,7 @@
                     </td>
                     <td><strong>{{ formatCurrency(sale.total_price) }}</strong></td>
                     <td><strong>{{ formatCurrency(sale.total_price - sale.total_cost) }}</strong></td>
-                    <td class="actions" @click.stop>
+                    <td v-if="isAdmin()" class="actions" @click.stop>
                       <NuxtLink
                         :to="`/sells/edit_sell/${sale.id}`"
                         class="btn btn-sm btn-outline-primary"
@@ -132,6 +132,7 @@ interface Sale {
 const { apiGet, apiDelete } = useApi()
 const { success, error: notifyError } = useNotifications()
 const { formatCurrency, formatDate } = useFormatters()
+const { isAdmin } = usePermissions()
 const loading = ref(true)
 const sales = ref<Sale[]>([])
 const expanded = ref<string | null>(null)

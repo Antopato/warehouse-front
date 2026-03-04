@@ -23,7 +23,7 @@
               </option>
             </select>
           </div>
-          <div class="col-md-3">
+          <div v-if="isAdmin()" class="col-md-3">
             <NuxtLink to="/products/add_product" class="btn btn-primary btn-icon">
               <i class="bi bi-plus-circle"></i>
               Nuevo Producto
@@ -53,7 +53,7 @@
               <th>Precio Venta</th>
               <th>Coste</th>
               <th>Ubicacion</th>
-              <th>Acciones</th>
+              <th v-if="isAdmin()">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -69,7 +69,7 @@
               <td>{{ formatCurrency(product.price) }}</td>
               <td>{{ formatCurrency(product.cost) }}</td>
               <td>{{ product.location || '-' }}</td>
-              <td class="actions">
+              <td v-if="isAdmin()" class="actions">
                 <NuxtLink
                   :to="`/products/edit_product/${product.id}`"
                   class="btn btn-sm btn-outline-primary"
@@ -154,6 +154,7 @@ interface Category {
 const { apiGet, apiDelete } = useApi()
 const { success, error } = useNotifications()
 const { formatCurrency } = useFormatters()
+const { isAdmin } = usePermissions()
 
 const products = ref<Product[]>([])
 const categories = ref<Category[]>([])
